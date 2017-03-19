@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Contenizando Aplicações PHP - PHP Conference 2016</title>
+
+		<meta name="description" content="Presenting Ionic 2 - GDG">
+		<meta name="author" content="Jefferson Souza">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+		<link rel="stylesheet" href="../shared/css/reveal.min.css">
+		<link rel="stylesheet" href="../shared/css/theme/ionic.css" id="theme">
+		<link rel="stylesheet" href="../shared/css/additional.css">
+		<link rel="stylesheet" href="../shared/css/jeff.css">
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../shared/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../shared/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<!-- Intro -->
+				<section data-background="#313744">
+					<img src="img/ionic2.png" width="350px" alt="ionic" style="border: none;outline:none;background: none;box-shadow:none;" />
+					<p><small>com</small></p>
+					<h4>Jefferson Souza</h4>
+				</section>
+				<section class="profile">
+					<img src="img/jeff.jpg" alt="" class="profile-photo" />
+					<h3>Jefferson Souza</h3>
+					<p>
+						Programador a 8 anos, criador do meetup Ionic Rio de Janeiro. <br />
+						Gosto de estar por dentro de novas tecnologias e de soluções que agilizem o desenvolvimento e otimize a performance.
+					</p>
+				</section>
+				<!-- What -->
+				<section>
+					<section>
+						<h2>O que é o Ionic?</h2>
+					</section>
+					<section>
+						<p>
+							O Ionic é um framework para desenvolvimento de aplicações mobile hibridas criado em 2013 pela Drifty e com um grande suporte e adoção pela comunidade.
+							Com ele é possível criar aplicações com o look and feel de uma aplicação nativa, mas ter apenas uma base de código,
+							e no final, gerar instaladores para iOS e Android.
+						</p>
+					</section>
+					<section>
+						<p>Construido com Tecnologias que você já conhece</p>
+						<img src="img/html.png" alt="" class="fragment" width="250" />
+						<img src="img/css.png" alt="" class="fragment" width="250" />
+						<img src="img/js.png" alt="" class="fragment" width="250" />
+					</section>
+					<section class="present">
+						<p>e ainda conta com os "super poderes" do Angular</p>
+						<img src="img/angular-icon.png" alt="" />
+					</section>
+					<section class="present">
+						<img src="img/performance-icon.png" alt="" width="250" />
+						<h3>Performance Obsessed</h3>
+						<ul>
+							<li>Testes exaustivos até a release</li>
+							<li>Aceleração de animações via hardware</li>
+							<li>Pouca manipulação de DOM</li>
+						</ul>
+					</section>
+					<section class="present">
+						<img src="img/sass-icon.png" alt="" width="250">
+						<h3>Fácil Tematização</h3>
+						<ul>
+							<li>CSS reutilizável</li>
+							<li>Forma simples de deixar o app do seu jeito</li>
+							<li>Estilos padrão simples de serem sobrescritos</li>
+						</ul>
+					</section>
+					<section class="present">
+						<img src="img/ionicons.png" alt="" width="600" />
+						<h3>Ionicons</h3>
+						<p>
+							Mais de 700 ícones para a sua aplicação <br>
+							(Android e iOS)
+						</p>
+					</section>
+					<section class="present" style="top: -350px; display: block;">
+						<h3>Platform Continuity</h3>
+						<img src="img/platformcont.png" alt="" width="500" />
+					</section>
+					<section class="present" style="top: -350px; display: block;">
+						<h3>Ionic View</h3>
+						<small>Teste sua aplicação em diversos dispositivos, sem precisar instalar</small>
+						<img src="img/ionic-view-preview-right.png" alt="" width="600" />
+					</section>
+
+				</section>
+				<section data-background="img/ionic-stats.png" class="present" style="top: 18.5px; display: block;">
+					<h3>Números</h3>
+					<img src="img/stats.png" alt="" />
+				</section>
+
+				<section>
+					<section>
+						<img class="fragment" src="img/ionic2.png" width="350px" alt="ionic" style="border: none;outline:none;background: none;box-shadow:none;" />
+					</section>
+					<section>
+						<img src="img/html5.png" alt="" class="" width="400" />
+					</section>
+					<section>
+						<img src="img/jsr.png" alt="" class="" width="400" />
+					</section>
+					<section>
+						<img src="img/angular2.png" alt="" class="" width="400" />
+					</section>
+					<section>
+						<img src="img/ts.png" alt="" class="" width="400" />
+					</section>
+					<section>
+						<h2>Componentes</h2>
+						<p>Novos e reformulados componentes, tirando o melhor proveito do Angular 2</p>
+					</section>
+					<section>
+						<h2>Simplicidade</h2>
+		<div flex>
+          <pre col>
+            <code class="html">&lt;ion-navbar&gt;
+  &lt;ion-title&gt;Profile&lt;/ion-title&gt;
+&lt;/ion-navbar&gt;
+
+
+&lt;ion-content&gt;
+  {{first}} {{last}}
+&lt;/ion-content&gt;</code>
+          </pre>
+          <pre col>
+            <code class="javascript">@Page({
+  templateUrl: 'profile.html'
+})
+export class Profile {
+  constructor() {
+    this.first = 'Biff';
+    this.last = 'Tannen';
+  }
+}</code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<h3>Routes</h3>
+							<p>Maior controle dos states da sua aplicação</p>
+						<pre col>
+            <code class="javascript">pushSettings() {
+  this.nav.push(Settings);
+}
+
+goBack() {
+  this.nav.pop();
+}
+
+resetHome() {
+  this.nav.setRoot(Home);
+}</code>
+          </pre>
+					</section>
+					<section>
+						<div flex>
+							<div col style="font-size: 30px;">
+								<h3>Customizações</h3>
+								<p>Deixe seu App com a sua cara</p>
+								<p>Diversos temas prontos</p>
+								<p>Sistema de build simples</p>
+								<p>Sass habilitado por padrão</p>
+							</div>
+							<div col center>
+								<img src="img/theming.png">
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<!-- #ComoFaz -->
+				<section>
+					<section>
+						<h2>Gostei disso! #ComoFaz</h2>
+						<img src="img/ilike.jpg" alt="" />
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Instalação</h2>
+						<div class="fragment"><pre><code>$ npm install -g cordova ionic</code></pre></div>
+					</section>
+					<section>
+						<p>Após a instalação, para checar se o ionic está instalado corretamente, basta executar o comando abaixo</p>
+						<pre><code>ionic</code></pre>
+						<p>E deverá ser mostrada a seguinte tela</p>
+					</section>
+					<section>
+						<img src="img/ionic-cli.png" alt="">
+					</section>
+				</section>
+
+				<!-- Primeiro App -->
+				<section>
+					<section>
+						<h2>Criando Seu Primeiro App</h2>
+						<div class="fragment">
+							<p>Basta rodar os seguintes comandos:</p>
+							<pre><code>$ ionic start HelloWorld --v2</code></pre>
+						</div>
+						<div class="fragment">
+							<pre><code>$ cd HelloWorld</code></pre>
+						</div>
+						<div class="fragment">
+							<pre><code>$ ionic serve --labs</code></pre>
+						</div>
+					</section>
+				</section>
+
+				<!-- Typescript -->
+				<section>
+					<section>
+						<h2>Typescript</h2>
+						<p>O Typescript é um 'superset' de Java Script, Open Source, criado pela Microsoft e adotado por padrão no Angular 2</p>
+					</section>
+					<section>
+						<p>Com TypeScript podemos escrever código utilizando uma estrutura fortemente tipada e ter este código compilado para JavaScript puro.</p>
+					</section>
+					<section>
+						<p>Com TypeScript podemos escrever um código mais conciso e robusto, podendo utilizar Components, Classes, Interfaces, etc....</p>
+					</section>
+					<section>
+						<p>Um das regras do TypeScript é "Todo Javascript válido é um Javascript válido."</p>
+					</section>
+					<section>
+						<h2>Classe</h2>
+<pre>
+<code class="javascript" data-trim contenteditable style="font-size: 18px;">
+class Point {
+    x: number;
+    y: number;
+    constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+    }
+    getDist() {
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+    }
+}
+var p = new Point(3,4);
+var dist = p.getDst();
+alert("Hypotenuse is: " + dist);</code>
+</pre>
+					</section>
+					<section>
+						<p>Mais informações em <a href="http://www.diullei.com/TypeScript-ptBR/" style="text-decoration: underline;">Português</a> ou <a href="http://www.typescriptlang.org/" style="text-decoration: underline;">Inglês</a></p>
+					</section>
+				</section>
+
+				<!-- Components -->
+				<section>
+					<section>
+						<h2>Components</h2>
+						<p>O Ionic possui uma vasta lista de componentes, mas, vamos entender um pouco como eles funcionam no Ng2</p>
+					</section>
+
+					<section>
+						<h2>Alert</h2>
+						<div flex>
+          <pre col>
+            <code class="javascript">import { AlertController } from 'ionic-angular';
+
+export class MyPage {
+  constructor(public alertCtrl: AlertController) {
+  }
+
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'New Friend!',
+      subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+}</code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screeshot-alert.png" alt="Alert Component">
+					</section>
+
+					<section>
+						<h2>Buttons</h2>
+						<div flex>
+          <pre col>
+            <code class="html"><!-- Simple -->
+<button ion-button>Default</button>
+<!-- Full -->
+<button ion-button full>Full Button</button>
+<!-- Float the icon left -->
+<button ion-button icon-left>
+  <ion-icon name="home"></ion-icon>
+  Left Icon
+</button></code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-buttons.png" alt="Button Component">
+					</section>
+
+					<section>
+						<h2>Cards</h2>
+						<div flex>
+          <pre col>
+            <code class="html"><ion-card>
+  <img src="img/nin-live.png"/>
+  <ion-card-content>
+    <ion-card-title>
+      Nine Inch Nails Live
+      </ion-card-title>
+    <p>
+      The most popular industrial group ever, and largely
+      responsible for bringing the music to a mass audience.
+    </p>
+  </ion-card-content>
+</ion-card></code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-cards.png" alt="Card Component">
+					</section>
+
+					<section>
+						<h2>FABs</h2>
+						<div flex>
+          <pre col>
+            <code class="html"><ion-fab top right edge>
+<button ion-fab mini><ion-icon name="add"></ion-icon></button>
+<ion-fab-list>
+	<button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+	<button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+	<button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+	<button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+</ion-fab-list>
+</ion-fab></code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-fabs.png" alt="FAB Component">
+					</section>
+
+					<section>
+						<h2>Lists</h2>
+						<div flex>
+          <pre col>
+            <code class="html"><ion-list>
+  <ion-list-header>Today</ion-list-header>
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="img/avatar-cher.png">
+    </ion-avatar>
+    <h2>Cher</h2>
+    <p>Ugh. As if.</p>
+  </ion-item>
+</ion-list></code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-lists.png" alt="List Component">
+					</section>
+
+					<section>
+						<h2>Inputs</h2>
+						<div flex>
+          <pre col>
+            <code class="html"><ion-list>
+
+  <ion-item>
+    <ion-label stacked>Username</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+</ion-list></code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-inputs.png" alt="Input Component">
+					</section>
+
+					<section>
+						<h2>Modal</h2>
+						<div flex>
+          <pre col>
+            <code class="javascript">import { ModalController } from 'ionic-angular';
+import { ModalPage } from './modal-page';
+
+export class MyPage {
+  constructor(public modalCtrl: ModalController) {
+  }
+
+  presentModal() {
+    let modal = this.modalCtrl.create(ModalPage);
+    modal.present();
+  }
+}</code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-modals.png" alt="Input Component">
+					</section>
+
+					<section>
+						<h2>Searchbar</h2>
+						<div flex>
+          <pre col>
+            <code class="html"><ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+<ion-list>
+  <ion-item *ngFor="let item of items">
+    {{ item }}
+  </ion-item>
+</ion-list></code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-searchbar.png" alt="Searchbar Component">
+					</section>
+
+					<section>
+						<h2>Slider</h2>
+						<div flex>
+          <pre col>
+            <code class="html"><ion-slides pager>
+
+  <ion-slide style="background-color: green">
+    <h2>Slide 1</h2>
+  </ion-slide>
+
+  <ion-slide style="background-color: blue">
+    <h2>Slide 2</h2>
+  </ion-slide>
+
+  <ion-slide style="background-color: red">
+    <h2>Slide 3</h2>
+  </ion-slide>
+
+</ion-slides></code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-slider.png" alt="Slider Component">
+					</section>
+
+					<section>
+						<h2>Toast</h2>
+						<div flex>
+          <pre col>
+            <code class="javascript">import { ToastController } from 'ionic-angular';
+
+export class MyPage {
+  constructor(public toastCtrl: ToastController) {
+  }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Your files were successfully saved',
+      duration: 3000
+    });
+    toast.present();
+  }
+}</code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-toast.png" width="380" alt="Toast Component">
+					</section>
+
+					<section>
+						<h2>Toolbars</h2>
+						<div flex>
+          <pre col>
+            <code class="html"><ion-header>
+  <ion-toolbar>
+    <ion-title>Toolbar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content></ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer></code>
+          </pre>
+        </div>
+					</section>
+					<section>
+						<img src="img/screenshot-toolbar.png" width="380" alt="Toolbar Component">
+					</section>
+
+				</section>
+
+				<!-- Navigation -->
+				<section>
+					<section>
+						<h2>Navigation</h2>
+					</section>
+					<section>
+						<p>
+							Gerenciar seus links e rotas do aplicativo sempre foi uma dor de cabeça no Ionic 1.
+							No Ionic 2 o componente de navegação foi totalmente redesenhado e feito para dar ao desenvolvedor o controle que ele precisa em suas rotas.
+						</p>
+					</section>
+					<section>
+						<p>Basicamente suas rotas funcionarão da seguinte forma:</p>
+						<img src="img/stack.png" alt="navigation stack">
+					</section>
+					<section>
+						<pre col>
+            <code class="javascript">import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html'
+})
+export class HomePage {
+  constructor(public nav: NavController) { }
+  pushSettings() {
+    this.nav.push(Settings);
+  }
+
+  goBack() {
+    this.nav.pop();
+  }
+
+  resetHome() {
+    this.nav.setRoot(Home);
+  }
+}</code>
+          </pre>
+					</section>
+				</section>
+
+				<!-- Ionic Native -->
+				<section>
+					<section>
+						<h2>Ionic Native</h2>
+						<p>Interagindo com os recursos nativos do telefone.</p>
+					</section>
+					<section>
+						<p>
+							O Ionic Native é a evolução do ngCordova, desenvolvido pela mesma euqipe do Ionic, para o Ionic 1.
+							Com o Ionic Native é possivel interagir com os componentes nativos do device, utilizando os plugins do
+							cordova, e também do Native Script.
+						</p>
+					</section>
+					<section>
+						<h2>Geolocation</h2>
+						<p>Lat/Long</p>
+					</section>
+					<section>
+						<pre col>
+            <code class="javascript">import {Geolocation} from 'ionic-native';
+
+Geolocation.getCurrentPosition().then(pos => {
+  console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+});
+
+let watch = Geolocation.watchPosition().subscribe(pos => {
+  console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+});
+
+// to stop watching
+watch.unsubscribe();</code>
+          </pre>
+					</section>
+					<section>
+						<h2>Camera</h2>
+						<p>Take Some Photo</p>
+					</section>
+					<section>
+						<pre col>
+            <code class="javascript">import {Camera} from 'ionic-native';
+
+// wait for `ondeviceready` or use `platform.ready()` if you're using Ionic Framework 2
+this.platform().then(() => { // we're assuming you injected platform in your constructor
+  Camera.getPicture().then(
+    res => console.log("We have taken a picture!"),
+    err => console.error("Error taking picture", err)
+  );
+});</code>
+          </pre>
+					</section>
+				</section>
+
+				<!-- Dicas -->
+				<section>
+					<section>
+						<h1>Dicas</h1>
+					</section>
+
+					<section>
+						<h2>Mock de API</h2>
+					</section>
+					<section>
+						<h2>JSON Server</h2>
+						<p>https://github.com/typicode/json-server</p>
+						<img src="img/json-server.png" alt="">
+					</section>
+
+					<section>
+						<pre col>
+            <code class="javascript">{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}</code>
+          </pre>
+					<pre col>
+            <code class="javascript">json-server db.json --watch</code>
+          </pre>
+					</section>
+
+					<section>
+						<h2>Random Data</h2>
+						<p>http://www.json-generator.com/</p>
+					</section>
+					<section>
+						<img src="img/json-generator.png" alt="">
+					</section>
+
+					<section>
+						<h2>Use a Style Guide</h2>
+						<div class="fragment">
+							<h3>John Papa</h3>
+							<img src="img/john-pope.png" alt="" width="400">
+						</div>
+					</section>
+					<section>
+						<h3>John Papa</h3>
+						<img src="img/john-papa.jpg" alt="">
+						<p class="fragment">
+							<a href="https://angular.io/styleguide">https://angular.io/styleguide</a>
+						</p>
+					</section>
+
+					<section>
+						<h2>Editor</h2>
+						<img src="img/visual-studio-code.png" alt="">
+					</section>
+					<section>
+						<h2>Plugins</h2>
+						<ul>
+							<li>Angular v2 TypeScript Snippets(by John Papa)</li>
+							<li>Ionic 2 vscode (by Justin Willis)</li>
+							<li>Typescript Hero (by Christoph Bühler)</li>
+							<li>Auto Import (by Steoates)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Comunidade</h2>
+						<ul>
+							<li>Ionic Docs</li>
+							<li>Ionic Forum</li>
+							<li>Ionic Rio Meetup (<a href="https://www.meetup.com/pt-BR/Ionic-Rio-de-Janeiro">Meetup.com</a>)</li>
+							<li>Telegram (<a href="https://t.me/ionicrj">https://t.me/ionicrj</a>)</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- Thanks -->
+				<section class="present" style="top: 175.5px; display: block;">
+					<h3><code>&lt;/html&gt;</code></h3>
+					<a href="https://twitter.com/jeffersonsouza" target="_blank">@jeffersonsouza</a>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="../shared/lib/js/head.min.js"></script>
+		<script src="../shared/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../shared/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../shared/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
